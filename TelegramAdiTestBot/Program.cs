@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using Telegram.Bot;
 using Telegram.Bot.Args;
 
@@ -20,7 +21,7 @@ namespace TelegramAdiTestBot
             Console.WriteLine("Por favor ingrese cualquier tecla para salir");
             Console.ReadKey();
 
-            _botClient.StopReceiving();
+            _botClient.StopReceiving();           
         }
 
         private async static void _botClient_OnMessage(object sender, MessageEventArgs e)
@@ -31,10 +32,10 @@ namespace TelegramAdiTestBot
                 {
                     await _botClient.SendTextMessageAsync(
                         chatId: e.Message.Chat.Id,
-                        text: $"Hola Bienvenido a ADI Solutions " + Environment.NewLine +
+                        text: $"Hola Bienvenido a ChatBot Inteligente" + Environment.NewLine +
                               $"" + Environment.NewLine +
                               $"¿Que deseas realizar? " + Environment.NewLine +
-                              $"1. Página Web ADI Solutions" + Environment.NewLine +
+                              $"1. Página Web" + Environment.NewLine +
                               $"2. Desarrollo de aplicaciones Web" + Environment.NewLine +
                               $"3. Desarrollo de ChatBot" + Environment.NewLine +
                               $"4. Solicitud de cotización" + Environment.NewLine +
@@ -54,7 +55,7 @@ namespace TelegramAdiTestBot
                 {
                     await _botClient.SendTextMessageAsync(
                         chatId: e.Message.Chat.Id,
-                        text: $"https://adisolutions.com.co/"
+                        text: $"Desarrollo de páginas web"
                         );
                 }
 
