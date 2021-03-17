@@ -34,11 +34,20 @@ namespace TelegramAdiTestBot
                         text: $"Hola Bienvenido a ADI Solutions " + Environment.NewLine +
                               $"" + Environment.NewLine +
                               $"¿Que deseas realizar? " + Environment.NewLine +
-                              $"" + Environment.NewLine +
-                              $"1. Página Web ADI Solutions" +
-                              $"" + Environment.NewLine +
-                              $"2. Conocer el equipo de ADI Solutions"
+                              $"1. Página Web ADI Solutions" + Environment.NewLine +
+                              $"2. Desarrollo de aplicaciones Web" + Environment.NewLine +
+                              $"3. Desarrollo de ChatBot" + Environment.NewLine +
+                              $"4. Solicitud de cotización" + Environment.NewLine +
+                              $"5. Salir"
                         );
+                }
+                else if (!e.Message.Text.ToLower().Contains($"hola") && !e.Message.Text.ToLower().Contains("1") &&
+                    !e.Message.Text.ToLower().Contains("2") && !e.Message.Text.ToLower().Contains("3") &&
+                    !e.Message.Text.ToLower().Contains("4") && !e.Message.Text.ToLower().Contains("5"))
+                {
+                    await _botClient.SendTextMessageAsync(
+                   chatId: e.Message.Chat.Id,
+                   text: $"Disculpa no reconozco la opción ingresada: {e.Message.Text}, Si me saludas con un Hola aprendere");
                 }
 
                 if (e.Message.Text.ToLower().Contains("1"))
@@ -53,34 +62,34 @@ namespace TelegramAdiTestBot
                 {
                     await _botClient.SendTextMessageAsync(
                         chatId: e.Message.Chat.Id,
-                        text: $"Andres Bulla"
+                        text: $"Dejanos tus datos de contacto en contados minutos nos comunicaremos contigo!!!" + Environment.NewLine +
+                              $" Nombre Completa:" + Environment.NewLine +
+                              $" Número de Contacto:  "
                         );
+                }
 
-                    await _botClient.SendStickerAsync(
-                        chatId: e.Message.Chat.Id,
-                        sticker: "https://www.pngitem.com/pimgs/m/128-1280086_transparent-krillin-png-dibujos-de-dragon-ball-z.png"
-                        );
-
+                if (e.Message.Text.ToLower().Contains("3"))
+                {
                     await _botClient.SendTextMessageAsync(
-                       chatId: e.Message.Chat.Id,
-                       text: $"Andres Guerrero"
-                       );
-
-                    await _botClient.SendStickerAsync(
                         chatId: e.Message.Chat.Id,
-                        sticker: "http://pm1.narvii.com/7085/97bb26ea1678fd27379ba29453ee1c1e1118e254r1-564-630v2_uhq.jpg"
+                        text: $"Creamos diferentes flujos que responderan a tus clientes"
                         );
+                }
 
+                if (e.Message.Text.ToLower().Contains("4"))
+                {
                     await _botClient.SendTextMessageAsync(
-                     chatId: e.Message.Chat.Id,
-                     text: $"Alejandro Gil"
-                     );
+                        chatId: e.Message.Chat.Id,
+                        text: $" Números de Contacto"
+                        );
+                }
 
+                if (e.Message.Text.ToLower().Contains("5"))
+                {
                     await _botClient.SendStickerAsync(
                         chatId: e.Message.Chat.Id,
-                        sticker: "https://static.wikia.nocookie.net/powerrangersfanon/images/c/ce/Phineas.jpg/revision/latest?cb=20140205212422"
+                        sticker: "https://tlgrm.eu/_/stickers/8a1/9aa/8a19aab4-98c0-37cb-a3d4-491cb94d7e12/2.webp"
                         );
-
                 }
             }
         }
